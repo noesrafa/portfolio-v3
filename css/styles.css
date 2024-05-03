@@ -205,3 +205,9 @@ svg {
   height: 100%;
   object-fit: cover;
 }
+
+.world {
+  transform: scale(1);
+  opacity: 1;
+  transform: translateY(0); 
+}

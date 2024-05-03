@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function () {
       scale: 0,
       duration: 0.5,
       ease: "power2.out",
+      borderRadius: "50%",
     });
 
     manageItemLimit();
@@ -65,7 +66,27 @@ document.addEventListener("DOMContentLoaded", function () {
 
   container.addEventListener("mousemove", function (event) {
     clearTimeout(animationTimeout);
-    addNewItem(event.pageX-300, event.pageY);
+    addNewItem(event.pageX - 300, event.pageY);
     animationTimeout = setTimeout(startAnimation, 100);
+  });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+  const title_container = document.querySelector(".hero_title");
+  const phrase = "Top rated design for fast growing companies";
+
+  let words = phrase.split(" ");
+  words.forEach((word, index) => {
+    const wordContainer = document.createElement("span");
+    wordContainer.className = "word";
+    wordContainer.innerText = word + " ";
+
+    gsap.from(wordContainer, {
+        opacity: 0,
+        duration: 1,
+        delay: index * 0.1,
+        });
+
+    title_container.appendChild(wordContainer);
   });
 });
