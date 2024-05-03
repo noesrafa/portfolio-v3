@@ -1,4 +1,5 @@
-const title_container = document.querySelector(".hero_title");
+// const title_container = document.querySelector(".hero_title");
+const title_container = document.querySelector("[animation-chat]");
 const dot = document.createElement("span");
 // const container = document.querySelector(".items");
 const sectionHero = document.querySelector(".hero");
@@ -84,7 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const phrase = "Top rated design for fast growing companies";
+  const phrase = document.querySelector("[animation-chat]").textContent;
+  console.log(phrase);
 
   dot.className = "dot";
   title_container.appendChild(dot);

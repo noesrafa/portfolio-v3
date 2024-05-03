@@ -1,6 +1,6 @@
 :root {
-  --background: #eff3f8;
-  --primary: #1e222c;
+  --background: #f4f3f1;
+  --primary: #1b1b1b;
   --detail: #4e4e4e;
 }
 
@@ -13,6 +13,7 @@
 body {
   font-family: "Inter", sans-serif !important;
   background-color: var(--background);
+  color: var(--primary);
   display: flex;
 }
 
@@ -116,6 +117,7 @@ aside {
   display: none;
   justify-content: space-between;
   align-items: center;
+  z-index: 99;
 }
 
 .mobile_nav img {
