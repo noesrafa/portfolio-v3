@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
       const lastX = parseInt(lastItem.style.left, 10) + 75;
       const lastY = parseInt(lastItem.style.top, 10) + 100;
       const distance = Math.sqrt((lastX - x) ** 2 + (lastY - y) ** 2);
-      if (distance < 60) return;
+      if (distance < 70) return;
     }
 
     const newItem = document.createElement("div");
@@ -47,9 +47,9 @@ document.addEventListener("DOMContentLoaded", function () {
     currentPlaying = true;
 
     gsap.to(".item", {
-      y: 1000,
+      y: 100,
       opacity: 0,
-      duration: 0.75,
+      duration: 0.5,
       stagger: 0.025,
       ease: "power2.in",
       onComplete: function () {
@@ -74,19 +74,38 @@ document.addEventListener("DOMContentLoaded", function () {
 document.addEventListener("DOMContentLoaded", function () {
   const title_container = document.querySelector(".hero_title");
   const phrase = "Top rated design for fast growing companies";
+  const dot = document.querySelector(".dot");
 
   let words = phrase.split(" ");
-  words.forEach((word, index) => {
-    const wordContainer = document.createElement("span");
-    wordContainer.className = "word";
-    wordContainer.innerText = word + " ";
+  let currentWord = 0;
+  let speed = 110;
 
-    gsap.from(wordContainer, {
-        opacity: 0,
-        duration: 1,
-        delay: index * 0.1,
-        });
-
-    title_container.appendChild(wordContainer);
+  gsap.from(".dot", {
+    scale: 0,
+    opacity: 0,
+    duration: 0.6,
+    ease: "elastic",
   });
+
+  function typeWriter() {
+    if (currentWord < words.length) {
+      const word = document.createElement("span");
+      word.className = "word";
+      word.innerHTML = words[currentWord];
+      title_container.insertBefore(word, dot);
+
+      currentWord++;
+      setTimeout(typeWriter, speed);
+    }
+    if (currentWord === words.length) {
+      gsap.to(".dot", {
+        scale: 0,
+        opacity: 0,
+        duration: 0.25,
+        ease: "power2.in",
+      });
+    }
+  }
+
+  setTimeout(typeWriter, 650);
 });
