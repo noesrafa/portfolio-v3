@@ -1,5 +1,17 @@
+const title_container = document.querySelector(".hero_title");
+const dot = document.createElement("span");
+// const container = document.querySelector(".items");
+const sectionHero = document.querySelector(".hero");
+const container = document.createElement("div");
+  container.className = "items";
+
 document.addEventListener("DOMContentLoaded", function () {
-  const container = document.querySelector(".items");
+  // create a div with class items inside the hero section before 3 seconds
+  setTimeout(() => {
+    container.className = "items";
+    sectionHero.appendChild(container);
+  }, 1300);
+  
   let imageIndex = 1;
   let animationTimeout = null;
   let currentPlaying = false;
@@ -72,9 +84,10 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const title_container = document.querySelector(".hero_title");
   const phrase = "Top rated design for fast growing companies";
-  const dot = document.querySelector(".dot");
+
+  dot.className = "dot";
+  title_container.appendChild(dot);
 
   let words = phrase.split(" ");
   let currentWord = 0;
@@ -98,7 +111,7 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 0,
         duration: 0.3,
         ease: "power2.out",
-      })
+      });
 
       currentWord++;
       setTimeout(typeWriter, speed);
@@ -109,11 +122,11 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 0,
         duration: 0.25,
         ease: "power2.in",
-      })
+      });
       gsap.to(".dot", {
         width: 0,
         delay: 0.25,
-      })
+      });
     }
   }
 
