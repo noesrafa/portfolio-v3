@@ -4,7 +4,7 @@ const dot = document.createElement("span");
 // const container = document.querySelector(".items");
 const sectionHero = document.querySelector(".hero");
 const container = document.createElement("div");
-  container.className = "items";
+container.className = "items";
 
 document.addEventListener("DOMContentLoaded", function () {
   // create a div with class items inside the hero section before 3 seconds
@@ -12,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function () {
     container.className = "items";
     sectionHero.appendChild(container);
   }, 1300);
-  
+
   let imageIndex = 1;
   let animationTimeout = null;
   let currentPlaying = false;
@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 document.addEventListener("DOMContentLoaded", function () {
-  const phrase = document.querySelector("[animation-chat]").textContent;
-  console.log(phrase);
+  const phrase = title_container.getAttribute("animation-chat");
+  console.log("hola", phrase);
 
   dot.className = "dot";
   title_container.appendChild(dot);
