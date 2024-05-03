@@ -94,6 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
       word.innerHTML = words[currentWord];
       title_container.insertBefore(word, dot);
 
+      gsap.from(word, {
+        opacity: 0,
+        duration: 0.3,
+        ease: "power2.out",
+      })
+
       currentWord++;
       setTimeout(typeWriter, speed);
     }
@@ -103,7 +109,11 @@ document.addEventListener("DOMContentLoaded", function () {
         opacity: 0,
         duration: 0.25,
         ease: "power2.in",
-      });
+      })
+      gsap.to(".dot", {
+        width: 0,
+        delay: 0.25,
+      })
     }
   }
 
