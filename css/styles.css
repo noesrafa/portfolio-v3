@@ -11,7 +11,7 @@
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: "Inter", sans-serif !important;
   background-color: var(--background);
   display: flex;
 }
@@ -34,6 +34,7 @@ a {
 
 main {
   flex: 1;
+  z-index: 2;
 }
 
 aside {
@@ -43,7 +44,7 @@ aside {
   top: 0;
   left: 0;
   padding: 32px;
-  position: relative;
+  z-index: 3;
 }
 
 .navigation {
@@ -111,6 +112,7 @@ aside {
   line-height: 90px;
   display: flex;
   align-items: center;
+  position: relative;
 }
 
 .hero_title {
@@ -118,8 +120,9 @@ aside {
   text-align: center;
   letter-spacing: -6px;
   font-weight: normal;
-  max-width: 700px;
   margin: 0 auto;
+  position: absolute;
+  width: 100%;
 }
 
 .input {
@@ -128,6 +131,7 @@ aside {
   display: flex;
   justify-content: center;
   padding-bottom: 32px;
+  z-index: 3;
 }
 
 .input_wrapper {
@@ -178,4 +182,26 @@ aside {
 svg {
   width: 100%;
   height: 100%;
+}
+
+/* ============= IMAGE TRAIL ================= */
+.items {
+  width: 100%;
+  height: 100%; 
+  z-index: 1;
+}
+
+.item {
+  position: absolute;
+  width: 150px;
+  height: 200px;
+  background-color: #000;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
