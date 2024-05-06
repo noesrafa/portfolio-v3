@@ -1,3 +1,4 @@
+const quoutesContainer = document.querySelector(".plans");
 const form = document.querySelector("form");
 const numberPages = document.querySelector("#pages");
 const numberFeatures = document.querySelector("#features");
@@ -27,7 +28,34 @@ form.addEventListener("submit", function (e) {
   }
 
   const quote = pages * pricePerPage + features * pricePerFeature;
-  alert(`El precio aproximado es: $${quote} MXN`);
+
+  // remove previous quote
+  const previousQuote = document.querySelector(".quote");
+  if (previousQuote) {
+    previousQuote.remove();
+  }
+
+  const quoteElement = document.createElement("div");
+  quoteElement.className = "quote";
+  quoteElement.innerHTML = `        
+    <div class="recent_quote">
+      <h3>Your quote is:</h3>
+      <ul>
+        <li>
+          <b>Pages:</b>
+          <span>${pages}</span>
+        </li>
+        <li>
+          <b>Features:</b>
+          <span>${features}</span>
+        </li>
+        <li>
+          <b>Price:</b>
+          <span>$ ${quote} MXN</span>
+        </li>
+      </ul>
+    </div>`;
+  quoutesContainer.appendChild(quoteElement);
 
   const recentQuoteInfo = {
     pages,
@@ -41,9 +69,27 @@ form.addEventListener("submit", function (e) {
 document.addEventListener("DOMContentLoaded", function () {
   const recentQuoteInfo = JSON.parse(localStorage.getItem("recentQuote"));
   if (recentQuoteInfo) {
-    alert(
-      `Tu última cotización fue de $${recentQuoteInfo.quote} MXN para ${recentQuoteInfo.pages} páginas y ${recentQuoteInfo.features} características.`
-    );
-    localStorage.removeItem("recentQuote");
+    const { pages, features, quote } = recentQuoteInfo;
+    const quoteElement = document.createElement("div");
+    quoteElement.className = "quote";
+    quoteElement.innerHTML = `        
+      <div class="recent_quote">
+        <h3>Last Quote Generated</h3>
+        <ul>
+          <li>
+            <b>Pages:</b>
+            <span>${pages}</span>
+          </li>
+          <li>
+            <b>Features:</b>
+            <span>${features}</span>
+          </li>
+          <li>
+            <b>Price:</b>
+            <span>$ ${quote} MXN</span>
+          </li>
+        </ul>
+      </div>`;
+    quoutesContainer.appendChild(quoteElement);
   }
 });
