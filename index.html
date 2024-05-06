@@ -11,7 +11,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/hero.css" />
+    <link rel="stylesheet" href="./css/home.css" />
   </head>
   <body>
     <nav class="mobile_nav">
@@ -40,39 +40,79 @@
       <div class="aside_bottom">
         <a href="#"><img src="./assets/behance.svg" alt="behance" /></a>
         <a href="#"><img src="./assets/linkedin.svg" alt="behance" /></a>
+        <span>© 2018-2024</span>
       </div>
     </aside>
+
     <main>
+      <div class="sticky-gradient"></div>
       <section class="hero">
         <h1
           class="hero_title"
           animation-chat="Top rated design for visionary ideas."
         ></h1>
       </section>
-
-      <!-- <div class="input">
-        <div class="input_wrapper">
-          <div class="input_wrapper_left">
-            <h2>Type something</h2>
-            <input type="text" placeholder="Show me your projects" />
+      <section class="project">
+        <div class="project_description">
+          <div>
+            <h2>Pefai builder</h2>
+            <p>Supercharged product creation tool.</p>
           </div>
-          <button type="submit" class="button_input">
-            <svg width="132" height="170" viewBox="0 0 132 170" fill="none">
-              <path
-                d="M63.4782 0.336548H116.64C125.123 0.336548 132 7.21343 132 15.6965V154.303C132 162.787 125.123 169.663 116.64 169.663H15.4801C6.99702 169.663 0.120117 162.787 0.120117 154.303V102.517C0.120117 94.0339 6.99702 87.157 15.4801 87.157H32.7582C41.2413 87.157 48.1182 80.2801 48.1182 71.797V15.6965C48.1182 7.21345 54.9951 0.336548 63.4782 0.336548Z"
-                fill="#1E222C"
-              />
-              <path
-                d="M111 119.269V142.115C111 142.451 110.863 142.774 110.619 143.012C110.375 143.25 110.045 143.384 109.7 143.384H89.4387L95.0204 148.832C95.1412 148.95 95.237 149.09 95.3023 149.244C95.3677 149.398 95.4013 149.563 95.4013 149.73C95.4013 149.897 95.3677 150.062 95.3023 150.216C95.237 150.37 95.1412 150.51 95.0204 150.628C94.8996 150.746 94.7562 150.84 94.5984 150.903C94.4406 150.967 94.2715 151 94.1007 151C93.9299 151 93.7607 150.967 93.6029 150.903C93.4451 150.84 93.3017 150.746 93.181 150.628L85.3813 143.013C85.2604 142.895 85.1645 142.755 85.0991 142.601C85.0337 142.447 85 142.282 85 142.115C85 141.948 85.0337 141.783 85.0991 141.629C85.1645 141.475 85.2604 141.335 85.3813 141.217L93.181 133.602C93.4249 133.364 93.7557 133.23 94.1007 133.23C94.4456 133.23 94.7765 133.364 95.0204 133.602C95.2643 133.84 95.4013 134.163 95.4013 134.5C95.4013 134.836 95.2643 135.159 95.0204 135.398L89.4387 140.846H108.4V119.269C108.4 118.933 108.537 118.61 108.781 118.372C109.025 118.134 109.355 118 109.7 118C110.045 118 110.375 118.134 110.619 118.372C110.863 118.61 111 118.933 111 119.269Z"
-                fill="white"
-              />
-            </svg>
-          </button>
+          <p>
+            Pefai® played a crucial role in fast product development of new
+            startups. Allow your team to focus on the core product and let Pefai
+            handle the rest.
+          </p>
+          <a href="#">Visit Pefai.com</a>
         </div>
-      </div> -->
+        <div class="project_images">
+          <img src="./assets/projects/pefai_1.png" alt="pefai builder" />
+          <img src="./assets/projects/pefai_2.png" alt="pefai builder" />
+        </div>
+      </section>
+
+      <section class="plans">
+        <form class="plan">
+          <h3>Quote your project</h3>
+          <p>Unlimited design and development support.</p>
+          <div class="formulary">
+            <div class="form_input">
+              <label for="pages">Number of pages</label>
+              <input type="number" id="pages" placeholder="0" />
+            </div>
+            <div class="form_input">
+              <label for="features">Number of features</label>
+              <input type="number" id="features" placeholder="0" />
+            </div>
+          </div>
+          <div class="perks">
+            <h4>What's included:</h4>
+            <ul>
+              <li>
+                <img src="./assets/check.svg" alt="check" />
+                <span>3 requests and revisions</span>
+              </li>
+              <li>
+                <img src="./assets/check.svg" alt="check" />
+                <span>Get started within 24 hours</span>
+              </li>
+              <li>
+                <img src="./assets/check.svg" alt="check" />
+                <span> No long term commitment, cancel anytime. </span>
+              </li>
+            </ul>
+          </div>
+          <button class="plan_button" type="submit">
+            Get a quote
+          </button>
+        </form>
+      </section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.37/dist/lenis.min.js"></script>
     <script src="./js/index.js"></script>
+    <script src="./js/quotes.js"></script>
   </body>
 </html>

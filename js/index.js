@@ -1,24 +1,29 @@
-// const title_container = document.querySelector(".hero_title");
 const title_container = document.querySelector("[animation-chat]");
 const dot = document.createElement("span");
-// const container = document.querySelector(".items");
 const sectionHero = document.querySelector(".hero");
 const container = document.createElement("div");
 container.className = "items";
 
+// ============= SMOOTH SCROLL ============= //
+const lenis = new Lenis();
+lenis.on("scroll", (e) => {});
+
+function raf(time) {
+  lenis.raf(time);
+  requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// ============= IMAGE TRAIL ANIMATION ============= //
 document.addEventListener("DOMContentLoaded", function () {
-  // create a div with class items inside the hero section before 3 seconds
-  setTimeout(() => {
-    container.className = "items";
-    sectionHero.appendChild(container);
-  }, 1300);
+  container.className = "items";
+  sectionHero.appendChild(container);
 
   let imageIndex = 1;
   let animationTimeout = null;
   let currentPlaying = false;
 
   function addNewItem(x, y) {
-    // compare distance between last item and current mouse position
     const lastItem = container.lastChild;
     if (lastItem) {
       const lastX = parseInt(lastItem.style.left, 10) + 75;
@@ -82,24 +87,22 @@ document.addEventListener("DOMContentLoaded", function () {
     addNewItem(event.pageX - 300, event.pageY);
     animationTimeout = setTimeout(startAnimation, 100);
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
+  // ============= TITLE ANIMATION ============= //
   const phrase = title_container.getAttribute("animation-chat");
-  console.log("hola", phrase);
-
   dot.className = "dot";
   title_container.appendChild(dot);
 
   let words = phrase.split(" ");
   let currentWord = 0;
-  let speed = 110;
+  let speed = 130;
 
   gsap.from(".dot", {
     scale: 0,
     opacity: 0,
-    duration: 0.6,
-    ease: "elastic",
+    duration: 0.5,
+    x: -1000,
+    ease: "expo.out",
   });
 
   function typeWriter() {
@@ -126,11 +129,41 @@ document.addEventListener("DOMContentLoaded", function () {
         ease: "power2.in",
       });
       gsap.to(".dot", {
+        height: 0,
         width: 0,
         delay: 0.25,
+        ease: "circ.out",
       });
     }
   }
 
-  setTimeout(typeWriter, 650);
+  setTimeout(typeWriter, 250);
+
+  // ============= Project animation =============
+  const project = document.querySelector(".project_description");
+
+  gsap.to(title_container, {
+    scrollTrigger: {
+      trigger: ".project",
+      start: "top 90%",
+      end: "+=500 bottom",
+      markers: false,
+      scrub: 0.5,
+    },
+    opacity: 0,
+    scale: 0.8,
+  });
+
+  gsap.to(project, {
+    scrollTrigger: {
+      trigger: ".project_images",
+      start: "top 50%",
+      end: "+=500 bottom",
+      markers: false,
+      scrub: 0.5,
+    },
+    opacity: 0,
+    y: 100,
+    scale: 0.8,
+  });
 });
